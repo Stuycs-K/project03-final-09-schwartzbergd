@@ -1,5 +1,5 @@
 .PHONY: run compile clean
-compile node: main.o
+compile texteditor: main.o
 	@gcc -o texteditor main.o
 run: texteditor
 	./texteditor $(ARGS)
