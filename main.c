@@ -14,10 +14,10 @@ int main(int argc, char *argv[]) {
 
 	struct termios old;
         struct termios new;
-        tcgetattr(0, &old);
+        tcgetattr(STDIN_FILENO, &old);
         new = old;
         new.c_lflag &= ~(ICANON | ECHO);
-        tcsetattr(0, TCSANOW, &new);
+        tcsetattr(STDIN_FILENO, TCSANOW, &new);
 
 	char *filename = argv[1];
 	printf("your filename is: %s\n", filename);
@@ -30,5 +30,5 @@ int main(int argc, char *argv[]) {
 	char c = getchar();
 	printf("char c is %c\n", c);
 
-	tcsetattr(0, TCSANOW, &old);
+	tcsetattr(STDIN_FILENO, TCSANOW, &old);
 }
